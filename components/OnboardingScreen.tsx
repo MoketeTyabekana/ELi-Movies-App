@@ -1,6 +1,5 @@
 import { styles } from "@/styles/startScreen";
 import Feather from '@expo/vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React from 'react';
@@ -12,7 +11,7 @@ import Button from "./common/Button";
 const OnboardingScreen = () => {
   const router = useRouter();
   const backgroundImageSource: ImageSourcePropType = require('../assets/images/onboarding_bg.jpg'); 
-   const navigation = useNavigation();
+
 
 
   return (
@@ -33,7 +32,7 @@ const OnboardingScreen = () => {
             </Text>
           </View>
           <Button title={"Get Started" }
-          onPress={() => router.navigate('/_home')} />
+          onPress={() => router.push("/home")} />
         </SafeAreaView>
       </LinearGradient>
     </ImageBackground>
