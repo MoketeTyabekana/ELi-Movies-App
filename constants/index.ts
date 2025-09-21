@@ -1,5 +1,6 @@
 const banner = require('@/assets/images/banner-bg.jpg');
 const avatar = require('@/assets/images/avatar.jpg');
+const backgroundImage= require('../assets/images/onboarding_bg.jpg'); 
 
 
 export const INFO_DATA = {
@@ -11,5 +12,5 @@ export const INFO_DATA = {
 
 
 
-export { avatar, banner };
+export { avatar, backgroundImage, banner };
 

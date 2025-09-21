@@ -1,21 +1,23 @@
+import { backgroundImage } from "@/constants";
 import { styles } from "@/styles/startScreen";
 import Feather from '@expo/vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { ImageBackground, ImageSourcePropType, SafeAreaView, Text, View } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "./common/Button";
 
 
 
 const OnboardingScreen = () => {
   const router = useRouter();
-  const backgroundImageSource: ImageSourcePropType = require('../assets/images/onboarding_bg.jpg'); 
+  
 
 
 
   return (
-    <ImageBackground source={backgroundImageSource} style={styles.backgroundImage}>
+    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
       <LinearGradient
         colors={['hsla(226, 60%, 10%, 0.00)', '#00012C', '#00012C']}
         locations={[0.1, 0.5, 1.0]} 
