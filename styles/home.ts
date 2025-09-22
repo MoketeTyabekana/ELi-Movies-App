@@ -19,7 +19,7 @@ headerText:{
     color:"#fff",
     fontSize:18,
     fontWeight:600,
-    marginVertical:15
+    marginVertical:20
 
 }
 

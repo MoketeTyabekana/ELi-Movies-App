@@ -1,30 +1,67 @@
+import MovieCard from "@/components/common/MovieCard";
+import { MovieProps } from "@/interfaces";
+import { searchMovies } from "@/services/omdb";
 import { style } from "@/styles/search";
 import Feather from '@expo/vector-icons/Feather';
-import React, { useState } from "react";
-import { TextInput, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, ScrollView, TextInput, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-export default function Search() {
+export default function Search({ navigation }: any) {
+  const [searchText, setSearchText] = useState('');
+  const [results, setResults] = useState<MovieProps[]>([]);
+  const [loading, setLoading] = useState(false);
 
-const [searchText, setSearchText] = useState('');
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (searchText.length > 2) {
+        fetchResults(searchText);
+      } else {
+        setResults([]);
+      }
+    }, 500); // debounce input
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchText]);
+
+  const fetchResults = async (query: string) => {
+    setLoading(true);
+    const data = await searchMovies(query);
+    setResults(data);
+    setLoading(false);
+  };
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={style.flexOne}>
         <View>
-             <View style={style.search}>
-        
-          <TextInput
-            style={style.input}
-            underlineColorAndroid="transparent"
-            placeholder="Search..."
-            value={searchText}
-            onChangeText={setSearchText}
-            placeholderTextColor="#888"
-          />
-           <Feather name="search" size={24} color="#888" />
-        </View>
-          <View style={style.container}></View>
+          <View style={style.search}>
+            <TextInput
+              style={style.input}
+              underlineColorAndroid="transparent"
+              placeholder="Search..."
+              value={searchText}
+              onChangeText={setSearchText}
+              placeholderTextColor="#888"
+            />
+            <Feather name="search" size={24} color="#888" />
+          </View>
+
+          <View style={style.container}>
+            {loading ? (
+              <ActivityIndicator size="large" style={{ marginTop: 20 }} />
+            ) : (
+              <ScrollView contentContainerStyle={style.movieGrid}>
+                {results.map((movie) => (
+                  <MovieCard
+                    key={movie.imdbID}
+                    Poster={movie.Poster}
+                    onPress={() => navigation.navigate("MovieDetail", { movie })}
+                  />
+                ))}
+              </ScrollView>
+            )}
+          </View>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>

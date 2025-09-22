@@ -23,3 +23,21 @@ export async function fetchMoviesByTitles(titles: string[]): Promise<MovieProps[
   const results = await Promise.all(promises);
   return results.filter(Boolean) as MovieProps[];
 }
+
+export async function searchMovies(query: string): Promise<MovieProps[]> {
+  try {
+    const response = await fetch(
+      `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${API_KEY}`
+    );
+    const data = await response.json();
+
+    if (data.Response === "True" && Array.isArray(data.Search)) {
+      return data.Search as MovieProps[];
+    }
+
+    return [];
+  } catch (error) {
+    console.error(`Error searching for "${query}":`, error);
+    return [];
+  }
+}
