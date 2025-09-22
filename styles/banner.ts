@@ -4,7 +4,7 @@ export const style=StyleSheet.create({
 avatar:{
  width:200,
  height:200,
- borderRadius:"100%",
+ borderRadius:100,
  marginTop:50,
  alignSelf:"center",
  borderWidth:6,
