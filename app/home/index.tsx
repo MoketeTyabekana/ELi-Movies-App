@@ -11,6 +11,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 export default function Home({ navigation }: any) {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const loadMovies = async () => {
