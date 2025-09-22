@@ -20,18 +20,18 @@ nameText:{
 },
 titleText:{
     marginVertical:15,
-    fontSize:18,
+    fontSize:14,
     color:"#ffffffff",
     textAlign:"center"
 },
 bioHeader:{
-fontSize:18,
- color:"#ffffffff",
+fontSize:14,
+color:"#ffffffff",
 
 
 },
 bioContent:{
-fontSize:18,
+fontSize:12,
  color:"#ffffffff",
 textAlign:"justify"
 }

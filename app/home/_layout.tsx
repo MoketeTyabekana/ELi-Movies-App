@@ -7,7 +7,7 @@ const HomeRootLayout = () => {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#FFC107",
-        headerShown: false,
+        headerShown: true,
         tabBarShowLabel: true,
         headerStyle: {
           backgroundColor: "#00012C",
