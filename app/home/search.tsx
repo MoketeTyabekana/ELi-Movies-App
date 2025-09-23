@@ -2,13 +2,19 @@ import MovieCard from "@/components/common/MovieCard";
 import { MovieProps } from "@/interfaces";
 import { searchMovies } from "@/services/omdb";
 import { style } from "@/styles/search";
-import Feather from '@expo/vector-icons/Feather';
+import Feather from "@expo/vector-icons/Feather";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, TextInput, View } from "react-native";
+import {
+  ActivityIndicator,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function Search({ navigation }: any) {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [results, setResults] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +40,7 @@ export default function Search({ navigation }: any) {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={style.flexOne}>
-        <View>
+        <View style={style.flexOne}>
           <View style={style.search}>
             <TextInput
               style={style.input}
@@ -46,22 +52,25 @@ export default function Search({ navigation }: any) {
             />
             <Feather name="search" size={24} color="#888" />
           </View>
+          <Text style={style.headerText}>
+            {searchText.trim().length > 0
+              ? `Your Search Results For : ${searchText}`
+              : "Your search results will appear below"}
+          </Text>
 
-          <View style={style.container}>
-            {loading ? (
-              <ActivityIndicator size="large" style={{ marginTop: 20 }} />
-            ) : (
-              <ScrollView contentContainerStyle={style.movieGrid}>
-                {results.map((movie) => (
-                  <MovieCard
-                    key={movie.imdbID}
-                    Poster={movie.Poster}
-                    onPress={() => navigation.navigate("MovieDetail", { movie })}
-                  />
-                ))}
-              </ScrollView>
-            )}
-          </View>
+          {loading ? (
+            <ActivityIndicator size="large" style={{ marginTop: 20 }} />
+          ) : (
+            <ScrollView contentContainerStyle={style.movieGrid}>
+              {results.map((movie) => (
+                <MovieCard
+                  key={movie.imdbID}
+                  Poster={movie.Poster}
+                  onPress={() => navigation.navigate("MovieDetail", { movie })}
+                />
+              ))}
+            </ScrollView>
+          )}
         </View>
       </SafeAreaView>
     </SafeAreaProvider>

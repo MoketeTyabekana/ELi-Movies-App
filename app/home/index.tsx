@@ -36,11 +36,10 @@ export default function Home({ navigation }: any) {
   return (
    <SafeAreaProvider>
  <SafeAreaView style={style.flexOne}>
+   <Text style={style.headerText}>Recommended Movies For You:</Text>
    <ScrollView style={style.container}>
-     <Text style={style.headerText}>Recommended Movies For You:</Text>
-     <View
-       style={style.movieGrid}
-     >
+    
+     <View style={style.movieGrid} >
      
        {movies.map((movie) => (
          <MovieCard
