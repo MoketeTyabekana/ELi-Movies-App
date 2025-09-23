@@ -3,6 +3,7 @@ import { MovieProps } from "@/interfaces";
 import { searchMovies } from "@/services/omdb";
 import { style } from "@/styles/search";
 import Feather from "@expo/vector-icons/Feather";
+import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -13,10 +14,13 @@ import {
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
+
 export default function Search({ navigation }: any) {
   const [searchText, setSearchText] = useState("");
   const [results, setResults] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -66,7 +70,8 @@ export default function Search({ navigation }: any) {
                 <MovieCard
                   key={movie.imdbID}
                   Poster={movie.Poster}
-                  onPress={() => navigation.navigate("MovieDetail", { movie })}
+             onPress={() => router.push(`/details/${movie.imdbID}`)}
+
                 />
               ))}
             </ScrollView>

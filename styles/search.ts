@@ -8,17 +8,17 @@ export const style = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 20,
+   
   },
   movieGrid: {
-    padding: 16,
+   paddingHorizontal: 20,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
   },
   headerText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 600,
     margin: 20,
   },

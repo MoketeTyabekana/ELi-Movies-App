@@ -8,7 +8,7 @@ flexOne:{
 
 container:{
     flex:1,
-    padding:20,
+    paddingHorizontal:20,
 },
 movieGrid:{
       flexDirection: "row",
@@ -17,9 +17,9 @@ movieGrid:{
 },
 headerText:{
     color:"#fff",
-    fontSize:18,
+    fontSize:12,
     fontWeight:600,
-    marginVertical:20
+    margin:20
 
 }
 
