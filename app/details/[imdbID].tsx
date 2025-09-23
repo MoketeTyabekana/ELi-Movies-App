@@ -1,4 +1,4 @@
-import MovieCard from "@/components/common/MovieCard";
+import MovieDetailsCard from "@/components/MovieDetailsCard";
 import { MovieProps } from "@/interfaces";
 import { fetchMovie } from "@/services/omdb"; // ✅ updated import
 import { style } from "@/styles/details";
@@ -38,12 +38,18 @@ export default function MovieDetails() {
     navigation.setOptions({
       headerStyle: { backgroundColor: "#00012C" },
       headerLeft: () => (
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 16 }}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ marginLeft: 16 }}
+        >
           <MaterialCommunityIcons name="arrow-left" size={28} color="#fff" />
         </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => console.log("Add to favorites")} style={{ marginRight: 16 }}>
+        <TouchableOpacity
+          onPress={() => console.log("Add to favorites")}
+          style={{ marginRight: 16 }}
+        >
           <MaterialCommunityIcons name="heart-outline" size={28} color="#fff" />
         </TouchableOpacity>
       ),
@@ -59,12 +65,14 @@ export default function MovieDetails() {
           <Text style={{ margin: 20 }}>Movie not found.</Text>
         ) : (
           <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-            <MovieCard
+            <MovieDetailsCard
               Poster={movie.Poster}
               Title={movie.Title}
               Year={movie.Year}
               Genre={movie.Genre}
-              onPress={() => {}}
+              Plot={movie.Plot}
+              imdbID={movie.imdbID}
+              onPress={() => console.log("Movie card pressed")}
             />
           </ScrollView>
         )}
