@@ -1,7 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Tabs } from "expo-router";
-import { TouchableOpacity } from "react-native";
 
 const HomeRootLayout = () => {
   return (
@@ -35,13 +34,6 @@ const HomeRootLayout = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="movie-filter-outline" size={24} color={color} />
           ),
-              headerRight: () => (
-      <TouchableOpacity onPress={() => {
-      }} style={{ marginRight: 16 }}>
-        <MaterialCommunityIcons name="refresh" size={32} color="#fff" />
-      </TouchableOpacity>
-    ),
-
         }}
       />
       <Tabs.Screen

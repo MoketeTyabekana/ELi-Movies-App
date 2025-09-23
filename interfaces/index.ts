@@ -10,5 +10,6 @@ export interface MovieProps {
   Type?: string;
   Poster?: string;
   Plot?: string;
+  Genre?:string
   onPress?: () => void;
 }
