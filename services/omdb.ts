@@ -41,3 +41,19 @@ export async function searchMovies(query: string): Promise<MovieProps[]> {
     return [];
   }
 }
+
+
+export async function fetchMovie(
+  value: string,
+  mode: "id" | "title" = "id"
+): Promise<MovieProps | null> {
+  const param = mode === "id" ? `i=${value}` : `t=${encodeURIComponent(value)}`;
+  try {
+    const response = await fetch(`https://www.omdbapi.com/?${param}&apikey=${API_KEY}`);
+    const data = await response.json();
+    return data.Response === "True" ? data : null;
+  } catch (error) {
+    console.error(`Error fetching movie by ${mode}:`, error);
+    return null;
+  }
+}
