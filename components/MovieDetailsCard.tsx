@@ -1,7 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MovieProps } from "../interfaces";
-
 const MovieCard: React.FC<MovieProps> = ({
   Title,
   Year,

@@ -1,14 +1,32 @@
+import MovieDetailsCard from "@/components/MovieDetailsCard";
+import { useFavorites } from "@/context/FavoritesContext";
 import { style } from "@/styles/favourites";
 import React from "react";
-import { View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { FlatList, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Favourites() {
-  return (
-    <SafeAreaProvider>
+  const { favorites } = useFavorites();
+
+  if (favorites.length === 0) {
+    return (
       <SafeAreaView style={style.flexOne}>
-        <View style={style.container}></View>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <Text style={{ color: "#fff" }}>No favorites yet</Text>
+        </View>
       </SafeAreaView>
-    </SafeAreaProvider>
+    );
+  }
+
+  return (
+    <SafeAreaView style={style.flexOne}>
+      <View style={{ flex: 1, padding: 16 }}>
+        <FlatList
+          data={favorites}
+          keyExtractor={(item) => item.imdbID}
+          renderItem={({ item }) => <MovieDetailsCard {...item} />}
+        />
+      </View>
+    </SafeAreaView>
   );
 }

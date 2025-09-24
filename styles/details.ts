@@ -9,6 +9,6 @@ flexOne:{
 container:{
     flex:1,
     
-}
+},
 
 })

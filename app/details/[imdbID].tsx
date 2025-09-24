@@ -1,6 +1,7 @@
 import MovieDetailsCard from "@/components/MovieDetailsCard";
+import { useFavorites } from "@/context/FavoritesContext";
 import { MovieProps } from "@/interfaces";
-import { fetchMovie } from "@/services/omdb"; // ✅ updated import
+import { fetchMovie } from "@/services/omdb";
 import { style } from "@/styles/details";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, useNavigation } from "expo-router";
@@ -19,12 +20,12 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState<MovieProps | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const navigation = useNavigation();
 
   useEffect(() => {
     const loadMovie = async () => {
-      const result = await fetchMovie(imdbID as string, "id"); // ✅ fetch by ID
-      console.log("Fetched movie:", result);
+      const result = await fetchMovie(imdbID as string, "id");
       setMovie(result);
       setLoading(false);
     };
@@ -32,6 +33,7 @@ export default function MovieDetails() {
     if (imdbID) loadMovie();
   }, [imdbID]);
 
+  // 🔹 Update header whenever movie OR favorites state changes
   useLayoutEffect(() => {
     if (!movie) return;
 
@@ -47,14 +49,26 @@ export default function MovieDetails() {
       ),
       headerRight: () => (
         <TouchableOpacity
-          onPress={() => console.log("Add to favorites")}
+          onPress={() => {
+            if (isFavorite(movie?.imdbID)) {
+              removeFromFavorites(movie.imdbID);
+              console.log("Removed from favorites:", movie.Title);
+            } else {
+              addToFavorites(movie);
+              console.log("Added to favorites:", movie.Title);
+            }
+          }}
           style={{ marginRight: 16 }}
         >
-          <MaterialCommunityIcons name="heart-outline" size={28} color="#fff" />
+          <MaterialCommunityIcons
+            name={isFavorite(movie.imdbID) ? "heart" : "heart-outline"}
+            size={28}
+            color="#fff"
+          />
         </TouchableOpacity>
       ),
     });
-  }, [navigation, movie]);
+  }, [navigation, movie, isFavorite, addToFavorites, removeFromFavorites]);
 
   return (
     <SafeAreaView style={style.flexOne}>
