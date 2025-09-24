@@ -1,50 +1,132 @@
-# Welcome to your Expo app 👋
+# Eli Movies App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A cross-platform Movie Recommendation Application built with **React Native**, **Expo**, and **Next.js** (Web/PWA variant).  
+The app allows users to discover, view, and save their favorite movies while showcasing dynamic routing, API integration, and responsive UI design.
 
-## Get started
+This project was developed as part of the **ProDev FE Real-World Application case study**, reflecting real-world challenges developers face when building scalable, user-focused applications.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Overview
 
-2. Start the app
+The **Movie Explorer App** enables users to:
 
-   ```bash
-   npx expo start
-   ```
+- Browse trending and recommended movies via a public API (**OMDb**).
+- Save and manage favorite movies locally using **Context API** or persistent storage.
+- Navigate to detailed movie pages using **dynamic routing**.
+- Experience a responsive, interactive, and visually appealing dashboard across devices.
 
-In the output, you'll find options to open the app in a
+This case study highlights:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Dynamic routing with **Next.js/Expo Router**.  
+- Local storage & personalization for user favorites.  
+- Reusable UI components built with **Styled Components**.  
+- Cross-platform support (**Web, Mobile, and PWA**).  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## Project Goals
 
-When you're ready, run:
+- **Dynamic Routing**  
+  Implement detailed pages for movies using Next.js dynamic routing.  
 
-```bash
-npm run reset-project
-```
+- **User Personalization**  
+  Save favorite movies locally or via an API backend.  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Interactive Dashboard**  
+  Deliver a responsive and engaging UI to browse and manage movies.  
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## Technologies Used
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **React Native / Expo** – Mobile-first development.  
+- **Next.js** – Dynamic routing and SSR for web.  
+- **TypeScript** – Type safety and scalable code.  
+- **Styled Components** – Reusable, styled UI components.  
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## Key Features
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### API Integration
+
+- Fetch and display trending and recommended movies using the **OMDb API**.  
+- Handle loading states and errors gracefully.  
+
+### Dynamic Routing
+
+- Create detailed pages for individual movies.  
+- Use `/details/[imdbID]` routes for optimized navigation.  
+
+### Favorites Management
+
+- Save and access favorite movies locally.  
+- Manage favorites in a dedicated dashboard.  
+
+### Responsive UI
+
+- Mobile-first design with Styled Components.  
+- Smooth animations and hover effects on movie cards.  
+
+---
+
+## Project Structure
+
+app/
+├── details/
+│ ├── _layout.tsx
+│ └── imdbID.tsx
+├── home/
+│ ├──_layout.tsx
+│ ├── Favorites.tsx
+│ ├── index.tsx
+│ ├── info.tsx
+│ └── search.tsx
+assets/
+components/
+├── common/
+│ ├── Button.tsx
+│ ├── FavoritesCard.tsx
+│ ├── MovieCard.tsx
+│ └── Banner.tsx
+├── MovieDetailsCard.tsx
+└── OnboardingScreen.tsx
+constants/
+└── index.ts
+context/
+├── FavoritesContext.tsx
+└── MovieContext.tsx
+interfaces/
+└── index.ts
+services/
+└── omdb.ts
+styles/
+├── banner.ts
+├── details.ts
+├── favourites.ts
+├── home.ts
+├── info.ts
+├── search.ts
+└── startScreen.ts
+utils/
+├──getRandomTitles.ts
+
+### Functionality
+
+- Fetches and displays trending/recommended movies.  
+- Implements detailed movie pages.  
+- Saves favorite movies locally or via API.  
+
+### User Experience
+
+- Smooth navigation with fast page load times.  
+- Responsive and visually engaging movie cards.  
+- Intuitive UI for saving and managing favorites.  
+
+## Development Notes
+
+- Movie data is fetched from **OMDb API** using IMDb IDs.  
+- Favorites are stored in memory via **Context API**
+- Navigation between screens is handled via **dynamic routing**.  
+- Components are modular and reusable, separating **logic, layout, and styling**.  
