@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { MovieProps } from "../interfaces";
 const MovieCard: React.FC<MovieProps> = ({
   Title,
@@ -10,7 +10,7 @@ const MovieCard: React.FC<MovieProps> = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress}>
+    <View style={styles.card} >
       {Poster ? (
         <Image source={{ uri: Poster }} style={styles.poster} />
       ) : (
@@ -23,7 +23,7 @@ const MovieCard: React.FC<MovieProps> = ({
           {Plot}
         </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

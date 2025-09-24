@@ -2,7 +2,7 @@ import { MovieProps } from "@/interfaces";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-export default function MovieCard({ Poster, onPress }: MovieProps) {
+export default function MovieCard({ Poster, onPress,imdbID }: MovieProps) {
   const isValidPoster = Poster && Poster !== "N/A";
 
   return (
