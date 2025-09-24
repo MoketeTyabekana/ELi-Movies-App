@@ -2,7 +2,7 @@ import MovieDetailsCard from "@/components/MovieDetailsCard";
 import { useFavorites } from "@/context/FavoritesContext";
 import { MovieProps } from "@/interfaces";
 import { fetchMovie } from "@/services/omdb";
-import { style } from "@/styles/details";
+import { styles } from "@/styles/details";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -33,7 +33,7 @@ export default function MovieDetails() {
     if (imdbID) loadMovie();
   }, [imdbID]);
 
-  // 🔹 Update header whenever movie OR favorites state changes
+ 
   useLayoutEffect(() => {
     if (!movie) return;
 
@@ -71,8 +71,8 @@ export default function MovieDetails() {
   }, [navigation, movie, isFavorite, addToFavorites, removeFromFavorites]);
 
   return (
-    <SafeAreaView style={style.flexOne}>
-      <View style={style.container}>
+    <SafeAreaView style={styles.flexOne}>
+      <View style={styles.container}>
         {loading ? (
           <ActivityIndicator size="large" style={{ marginTop: 40 }} />
         ) : !movie ? (

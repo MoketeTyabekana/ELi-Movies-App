@@ -50,6 +50,14 @@ placeholder: {
     fontSize: 14,
     color: "#ccc",
   },
-
+ratingText:{
+   fontSize: 14,
+ color: "#ccc",
+},
+rating:{
+    marginTop:4,
+    gap:5,
+    flexDirection:"row"
+}
 
 })

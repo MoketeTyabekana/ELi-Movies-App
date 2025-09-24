@@ -1,64 +1,55 @@
+import { styles } from "@/styles/details";
+import { Entypo } from "@expo/vector-icons";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { MovieProps } from "../interfaces";
 const MovieCard: React.FC<MovieProps> = ({
   Title,
   Year,
   Poster,
   Plot,
+  imdbRating,
   Genre,
-  onPress,
+  Runtime,
+  Actors,
+  Director,
 }) => {
+  
   return (
-    <View style={styles.card} >
+    <View style={styles.card}>
       {Poster ? (
         <Image source={{ uri: Poster }} style={styles.poster} />
       ) : (
         <View style={styles.placeholder} />
       )}
       <View style={styles.content}>
-        <Text style={styles.title}>{Title}</Text>
-        <Text style={styles.meta}>{Year} • {Genre}</Text>
-        <Text style={styles.plot} numberOfLines={3}>
-          {Plot}
-        </Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text style={styles.title}>{Title}</Text>
+          <Text style={styles.meta}>
+            {Year} • {Runtime}
+          </Text>
+        </View>
+
+        <View style={styles.ratingBlock}>
+          <View style={styles.rating}>
+            <Entypo name="star" size={18} color="#ffbc02ff" />
+            <Text style={styles.ratingText}>{imdbRating || "N/A"}/10</Text>
+          </View>
+          <Text style={styles.genre}>{Genre}</Text>
+        </View>
+        <Text style={styles.plot}>{Plot}</Text>
+
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text style={styles.meta}>Directed By</Text>
+          <Text style={styles.meta}>{Director || "Unknown Director"}</Text>
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text style={styles.meta}>Cast</Text>
+          <Text style={styles.meta}>{Actors || "Cast info not available"}</Text>
+        </View>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#0d0d2e",
-    overflow: "hidden",
-    marginBottom: 16,
-  },
-  poster: {
-    width: "100%",
-    height: 200,
-  },
-  placeholder: {
-    width: "100%",
-    height: 200,
-    backgroundColor: "#333",
-  },
-  content: {
-    padding: 12,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#fff",
-  },
-  meta: {
-    fontSize: 14,
-    color: "#aaa",
-    marginVertical: 4,
-  },
-  plot: {
-    fontSize: 14,
-    color: "#ddd",
-  },
-});
 
 export default MovieCard;
