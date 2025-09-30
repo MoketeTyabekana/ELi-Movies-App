@@ -86,6 +86,10 @@ export default function MovieDetails() {
               Genre={movie.Genre}
               Plot={movie.Plot}
               imdbID={movie.imdbID}
+              imdbRating={movie.imdbRating}
+              Runtime={movie.Runtime}
+              Director={movie.Director}
+              Actors={movie.Actors}
               onPress={() => console.log("Movie card pressed")}
             />
           </ScrollView>
