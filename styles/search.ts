@@ -37,7 +37,10 @@ export const style = StyleSheet.create({
     flex: 1,
     height: 40,
     fontSize: 16,
-    color: "#333",
+    color: "#ffffffff",
     borderWidth: 0,
+    paddingHorizontal: 10,
+    borderColor:" transparent ",
+
   },
 });

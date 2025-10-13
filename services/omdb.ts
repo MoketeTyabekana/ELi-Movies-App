@@ -32,7 +32,23 @@ export async function searchMovies(query: string): Promise<MovieProps[]> {
     const data = await response.json();
 
     if (data.Response === "True" && Array.isArray(data.Search)) {
-      return data.Search as MovieProps[];
+     
+      const detailedPromises = data.Search.map(async (item: any) => {
+        if (!item.imdbID) return null;
+        try {
+          const resp = await fetch(
+            `https://www.omdbapi.com/?i=${item.imdbID}&apikey=${API_KEY}`
+          );
+          const full = await resp.json();
+          return full.Response === "True" ? full : null;
+        } catch (err) {
+          console.error(`Error fetching details for ${item.imdbID}:`, err);
+          return null;
+        }
+      });
+
+      const detailed = await Promise.all(detailedPromises);
+      return detailed.filter(Boolean) as MovieProps[];
     }
 
     return [];

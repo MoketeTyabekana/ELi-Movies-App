@@ -29,7 +29,7 @@ export default function Search({ navigation }: any) {
       } else {
         setResults([]);
       }
-    }, 500); // debounce input
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [searchText]);
@@ -70,7 +70,11 @@ export default function Search({ navigation }: any) {
                 <MovieCard
                   key={movie.imdbID}
                   Poster={movie.Poster}
-             onPress={() => router.push(`/details/${movie.imdbID}`)}
+                  Title={movie.Title}
+                  imdbID={movie.imdbID}
+                  Rated={movie.Rated}
+                  Released={movie.Released}
+                  onPress={() => router.push(`/details/${movie.imdbID}`)}
 
                 />
               ))}

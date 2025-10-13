@@ -6,18 +6,18 @@ flexOne:{
     backgroundColor:"#000120ff"
 },
 
-container:{
-    flex:1,
-    
-},
   card: {
-     
     overflow: "hidden",
-    marginBottom: 16,
-  },
-  poster: {
+    flex: 1,
     width: "100%",
-    height: 200,
+  },
+  overlayCard: {
+   
+    borderRadius: 12,
+    marginBottom: 24,
+    padding: 16,
+   
+    alignSelf: 'stretch',
   },
   placeholder: {
     width: "100%",
