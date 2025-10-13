@@ -29,7 +29,7 @@ export default function Search({ navigation }: any) {
       } else {
         setResults([]);
       }
-    }, 500); // debounce input
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [searchText]);

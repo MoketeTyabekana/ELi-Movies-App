@@ -8,10 +8,10 @@ import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect, useLayoutEffect, useState } from "react";
 import {
   ActivityIndicator,
+  ImageBackground,
   ScrollView,
   Text,
-  TouchableOpacity,
-  View,
+  TouchableOpacity
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -72,12 +72,12 @@ export default function MovieDetails() {
 
   return (
     <SafeAreaView style={styles.flexOne}>
-      <View style={styles.container}>
-        {loading ? (
-          <ActivityIndicator size="large" style={{ marginTop: 40 }} />
-        ) : !movie ? (
-          <Text style={{ margin: 20 }}>Movie not found.</Text>
-        ) : (
+      {loading ? (
+        <ActivityIndicator size="large" style={{ marginTop: 40 }} />
+      ) : !movie ? (
+        <Text style={{ margin: 20 }}>Movie not found.</Text>
+      ) : (
+        <ImageBackground source={{ uri: movie.Poster }} style={styles.card} resizeMode="cover">
           <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
             <MovieDetailsCard
               Poster={movie.Poster}
@@ -93,8 +93,8 @@ export default function MovieDetails() {
               onPress={() => console.log("Movie card pressed")}
             />
           </ScrollView>
-        )}
-      </View>
+        </ImageBackground>
+      )}
     </SafeAreaView>
   );
 }
