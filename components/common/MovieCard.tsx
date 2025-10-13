@@ -3,7 +3,7 @@ import { Entypo } from "@expo/vector-icons";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-export default function MovieCard({ Poster, onPress, Title, Ratings, Year, imdbID }: MovieProps) {
+export default function MovieCard({ Poster, onPress, Title, imdbRating, Year, imdbID }: MovieProps) {
   const isValidPoster = Poster && Poster !== "N/A";
 
   return (
@@ -25,10 +25,10 @@ export default function MovieCard({ Poster, onPress, Title, Ratings, Year, imdbI
                 {Title}
              </Text>
               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                  <Text style={{ color: "#fff", marginTop: 4, fontSize: 14 }} numberOfLines={1}>
-                     <Entypo name="star" size={18} color="#ffbc02ff" />{Ratings ? ` ${Ratings}` : ''}
+                  <Text style={{ color: "#fff", marginTop: 4, fontSize: 14 ,flexDirection:'row',alignItems:'center'}}>
+                     <Entypo name="star" size={18} color="#ffbc02ff" />{imdbRating ? ` ${imdbRating}` : ''}
                   </Text>
-                  <Text style={{ color: "#fff", marginTop: 4, fontSize: 14 }} numberOfLines={1}>
+                  <Text style={{ color: "#fff", marginTop: 4, fontSize: 14 }}>
                     {Year ? ` ${Year}` : ''}
                   </Text>
               </View>
