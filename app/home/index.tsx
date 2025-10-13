@@ -74,6 +74,8 @@ export default function Home() {
                 Poster={movie.Poster}
                 Title={movie.Title}
                 imdbID={movie.imdbID}
+                Year={movie.Year}
+                Released={movie.Released}
                 onPress={() => router.push(`/details/${movie.imdbID}`)}
               />
             ))}

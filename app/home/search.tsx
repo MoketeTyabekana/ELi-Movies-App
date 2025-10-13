@@ -72,6 +72,8 @@ export default function Search({ navigation }: any) {
                   Poster={movie.Poster}
                   Title={movie.Title}
                   imdbID={movie.imdbID}
+                  Rated={movie.Rated}
+                  Released={movie.Released}
                   onPress={() => router.push(`/details/${movie.imdbID}`)}
 
                 />
