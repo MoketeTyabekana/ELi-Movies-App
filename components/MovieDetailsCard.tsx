@@ -3,10 +3,10 @@ import { Entypo } from "@expo/vector-icons";
 import React from "react";
 import { Text, View } from "react-native";
 import { MovieProps } from "../interfaces";
+
 const MovieCard: React.FC<MovieProps> = ({
   Title,
   Year,
-  Poster,
   Plot,
   imdbRating,
   Genre,
@@ -14,9 +14,8 @@ const MovieCard: React.FC<MovieProps> = ({
   Actors,
   Director,
 }) => {
-  
   return (
-    < View>
+    <View style={styles.overlayCard}>
       <View style={styles.content}>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Text style={styles.title}>{Title}</Text>

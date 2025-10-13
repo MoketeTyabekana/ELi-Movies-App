@@ -11,6 +11,14 @@ flexOne:{
     flex: 1,
     width: "100%",
   },
+  overlayCard: {
+   
+    borderRadius: 12,
+    marginBottom: 24,
+    padding: 16,
+   
+    alignSelf: 'stretch',
+  },
   placeholder: {
     width: "100%",
     height: 200,

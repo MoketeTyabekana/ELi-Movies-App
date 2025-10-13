@@ -4,6 +4,7 @@ import { MovieProps } from "@/interfaces";
 import { fetchMovie } from "@/services/omdb";
 import { styles } from "@/styles/details";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect, useLayoutEffect, useState } from "react";
 import {
@@ -78,21 +79,27 @@ export default function MovieDetails() {
         <Text style={{ margin: 20 }}>Movie not found.</Text>
       ) : (
         <ImageBackground source={{ uri: movie.Poster }} style={styles.card} resizeMode="cover">
-          <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-            <MovieDetailsCard
-              Poster={movie.Poster}
-              Title={movie.Title}
-              Year={movie.Year}
-              Genre={movie.Genre}
-              Plot={movie.Plot}
-              imdbID={movie.imdbID}
-              imdbRating={movie.imdbRating}
-              Runtime={movie.Runtime}
-              Director={movie.Director}
-              Actors={movie.Actors}
-              onPress={() => console.log("Movie card pressed")}
-            />
-          </ScrollView>
+          <LinearGradient
+            colors={["hsla(226, 60%, 10%, 0.00)", "#00012ce5", "#00012C"]}
+            locations={[0.1, 0.5, 1.0]}
+            style={{ flex: 1 }}
+          >
+        
+            <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'flex-end' }}>
+              <MovieDetailsCard
+                Title={movie.Title}
+                Year={movie.Year}
+                Genre={movie.Genre}
+                Plot={movie.Plot}
+                imdbID={movie.imdbID}
+                imdbRating={movie.imdbRating}
+                Runtime={movie.Runtime}
+                Director={movie.Director}
+                Actors={movie.Actors}
+                onPress={() => console.log("Movie card pressed")}
+              />
+            </ScrollView>
+          </LinearGradient>
         </ImageBackground>
       )}
     </SafeAreaView>
