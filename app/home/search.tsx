@@ -70,7 +70,9 @@ export default function Search({ navigation }: any) {
                 <MovieCard
                   key={movie.imdbID}
                   Poster={movie.Poster}
-             onPress={() => router.push(`/details/${movie.imdbID}`)}
+                  Title={movie.Title}
+                  imdbID={movie.imdbID}
+                  onPress={() => router.push(`/details/${movie.imdbID}`)}
 
                 />
               ))}

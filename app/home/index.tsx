@@ -72,6 +72,8 @@ export default function Home() {
               <MovieCard
                 key={movie.imdbID}
                 Poster={movie.Poster}
+                Title={movie.Title}
+                imdbID={movie.imdbID}
                 onPress={() => router.push(`/details/${movie.imdbID}`)}
               />
             ))}
