@@ -80,7 +80,7 @@ export default function MovieDetails() {
       ) : (
         <ImageBackground source={{ uri: movie.Poster }} style={styles.card} resizeMode="cover">
           <LinearGradient
-            colors={["hsla(226, 60%, 10%, 0.00)", "#00012ce5", "#00012C"]}
+            colors={["#0a112907", "#00012ce5", "#00012C"]}
             locations={[0.1, 0.5, 1.0]}
             style={{ flex: 1 }}
           >
