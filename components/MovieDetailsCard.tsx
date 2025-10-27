@@ -33,12 +33,12 @@ const MovieCard: React.FC<MovieProps> = ({
         </View>
         <Text style={styles.plot}>{Plot}</Text>
 
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text style={styles.meta}>Directed By</Text>
+        <View style={{ flexDirection: "column", justifyContent: "space-between" }}>
+          <Text style={{ ...styles.meta, fontWeight: "bold" }}>Directed By</Text>
           <Text style={styles.meta}>{Director || "Unknown Director"}</Text>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text style={styles.meta}>Cast</Text>
+        <View style={{ flexDirection: "column", justifyContent: "space-between" }}>
+          <Text style={{ ...styles.meta, fontWeight: "bold" }}>Cast</Text>
           <Text style={styles.meta}>{Actors || "Cast info not available"}</Text>
         </View>
       </View>
